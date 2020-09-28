@@ -9,6 +9,12 @@ import UIKit
 
 class InterviewCell: UITableViewCell {
 
+
+    static let identifier = "InterviewCell"
+    @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var companyClassifier: UILabel!
+    @IBOutlet weak var companyName: UILabel!
+    @IBOutlet weak var logoImage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,5 +25,19 @@ class InterviewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func configure(_ companyInfo: CompanyInfo?) {
+        if let companyInfo = companyInfo {
+            self.companyName.text = companyInfo.name
+         
+            if  let urlString = companyInfo.logo_path{
+                let url = URL(string: urlString)
+                self.logoImage.kf.setImage(with: url)
+            }
+            self.logoImage.contentMode = .scaleToFill
+            self.questionLabel.text = companyInfo.interview_question
+        }
+    }
+    
     
 }

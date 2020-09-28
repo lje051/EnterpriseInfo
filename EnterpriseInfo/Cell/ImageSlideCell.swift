@@ -9,9 +9,24 @@ import UIKit
 
 class ImageSlideCell: UICollectionViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
 
+
+        static let identifier = "ImageSlideCell"
+        let imageView = UIImageView()
+        
+        override init(frame: CGRect) {
+            super.init(frame: frame)
+            //  imageView.layer.cornerRadius = 12
+            imageView.backgroundColor = .clear
+            addSubview(imageView)
+            imageView.fillSuperview()
+            imageView.contentMode = .scaleToFill
+            imageView.stylingImv()
+        }
+        
+        required init?(coder aDecoder: NSCoder) {
+            fatalError()
+        }
+
+    
 }
